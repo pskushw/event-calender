@@ -5,9 +5,6 @@ var calender = angular.module("calender",[]);
 calender.controller("calenderCtrl", function($scope) {
   $scope.months = [1,2,3,4,5,6,7,8,9,10,11,12];
   $scope.years = [2017,2018,2019,2020];
-  //$scope.selectedYear = 2017,
-  //$scope.selectedMonth = 1;
- // $scope.dates = dates.getAllDays($scope.selectedYear,$scope.selectedMonth);
 });
 
 calender.directive("eventCalender", function(dates) {
@@ -18,12 +15,16 @@ calender.directive("eventCalender", function(dates) {
       $scope.selectedMonth = 1;
       $scope.showAddMeeting = false;
       $scope.event = {};
-      
+      $scope.selectUpdate = function() {
+         $scope.dates = dates.getAllDays($scope.selectedYear,$scope.selectedMonth);
+
+      }
+      $scope.dates = dates.getAllDays($scope.selectedYear,$scope.selectedMonth);
+
       $scope.addEvent = function(date) {
         $scope.showAddMeeting = true;
         $scope.eventDate = date;
-      };
-      $scope.dates = dates.getAllDays($scope.selectedYear,$scope.selectedMonth);
+      }; 
       
       $scope.getMeetings = function(date){
         return $scope.event[date.getTime()];
@@ -65,7 +66,6 @@ calender.service("dates", function() {
         a.push(s);
         s = new Date(s.setDate(s.getDate() + 1))
       }
-    
       return a;
   }
 });
