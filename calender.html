@@ -2,11 +2,11 @@
   <section class="action">
     <label>
       <span>Year: </span>
-      <select><option ng-repeat="year in years" ng-model="selectedYear">{{year}}</option></select>
+      <select ng-options="year as year for year in years" ng-change="selectUpdate()" ng-model="selectedYear"></select>
     </label>
     <label>
       <span>Month: </span>
-      <select><option ng-repeat="month in months" ng-model="selectedMonth">{{month}}</option></select>
+      <select ng-change="selectUpdate()" ng-model="selectedMonth" ng-options="month as month for month in months"></select>
     </label>
   </section>
   
