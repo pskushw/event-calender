@@ -1,0 +1,20 @@
+<section class="calender">
+  <section class="action">
+    <label>
+      <span>Year: </span>
+      <select><option ng-repeat="year in years" ng-model="selectedYear">{{year}}</option></select>
+    </label>
+    <label>
+      <span>Month: </span>
+      <select><option ng-repeat="month in months" ng-model="selectedMonth">{{month}}</option></select>
+    </label>
+  </section>
+  
+  <ul class="list">
+    <li ng-repeat="date in dates" ng-click="addEvent(date)">
+      <span ng-repeat='meeting in getMeetings(date)'>
+        {{meeting.desc}}
+      </span>{{date.getDate()}}</li>
+  </ul>
+  <schedule-event></schedule-event>
+</section>

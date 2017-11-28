@@ -1,0 +1,19 @@
+<section class="schedule-event" ng-show="showAddMeeting">
+    <h2>Add Event on Date: {{eventDate.getDate()}} of {{eventDate.getMonth() + 1}} month</h2>
+      <label>
+        <span>Description: </span>
+        <input type="text" name="desc" ng-model="desc">
+      </label>
+      <label>
+        <span>From: </span>
+        <input type="time" name="from" ng-model="from">
+      </label>
+      <label>
+        <span>To: </span>
+        <input type="time" name="to" ng-model="to">
+      </label>
+      <div class="action">
+        <button ng-click="addMeeting(eventDate,{desc,from,to})">Add</button>
+        <button ng-click="cancelMeeting()">Cancel</button>
+      </div>
+  </section>
